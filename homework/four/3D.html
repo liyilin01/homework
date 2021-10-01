@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D旋转盒子</title>
+    <style>
+        body{
+            perspective: 1000px;
+        }
+        li{
+            list-style: none;
+        }
+        ul{
+            height: 300px;
+            width: 300px;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            transform-style: preserve-3d;
+            margin: 200px auto;
+            animation: move 1s linear infinite;
+        }
+        @keyframes move {
+            0%{
+                transform: rotateX(0) rotateY(0);
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        ul:hover .a{
+            transform: translateZ(200px);
+        }
+        ul:hover .b{
+            transform:rotateX(-90deg) translateZ(200px);
+        }
+        ul:hover .c{
+            transform:rotateX(90deg) translateZ(200px);
+        }
+        ul:hover .d{
+            transform:rotateY(-90deg) translateZ(200px);
+        }
+        ul:hover .e{
+
+            transform:rotateY(90deg) translateZ(200px);
+        }
+        ul:hover .f{
+            transform:translateZ(-200px)
+        }
+        .a,.b,.c,.d,.e,.f{
+            background:rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            transition: all 1s;
+        }
+        .a{
+            transform: translateZ(150px);
+        }
+        .b{
+            transform:rotateX(-90deg) translateZ(150px);
+        }
+        .c{
+            transform:rotateX(90deg) translateZ(150px);
+        }
+        .d{
+            transform:rotateY(-90deg) translateZ(150px);
+        }
+        .e{
+            transform:rotateY(90deg) translateZ(150px);}
+        .f{
+            transform:translateZ(-150px);
+        }
+        .g,.h,.i,.j,.k,.l{
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top:50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -50px;
+        }
+        .g{
+            background-color: pink;
+            transform: translateZ(50px);
+            box-shadow: 0 0 10px pink;
+
+        }
+        .h{
+            background-color: red;
+            transform:rotateX(-90deg) translateZ(50px);
+            box-shadow: 0 0 10px red;
+        }
+        .i{
+            background-color: yellow;
+            transform:rotateX(90deg) translateZ(50px);
+            box-shadow: 0 0 10px yellow;
+        }
+        .j{
+            background-color: green;
+            transform:rotateY(90deg) translateZ(50px);
+        }
+        .k{
+            background-color: blue;
+            transform:rotateY(-90deg) translateZ(50px);
+            box-shadow: 0 0 10px blue;
+        }
+        .l{
+            background-color: purple;
+            transform:translateZ(-50px);
+            box-shadow: 0 0 5px purple;
+        }
+    </style>
+    <head></head>
+    <body>
+        <div>
+        <ul class="mofang">
+            <li class="a"></li>
+            <li class="b"></li>
+            <li class="c"></li>
+            <li class="d"></li>
+            <li class="e"></li>
+            <li class="f"></li>
+            <li class="g"></li>
+            <li class="h"></li>
+            <li class="i"></li>
+            <li class="j"></li>
+            <li class="k"></li>
+            <li class="l"></li>
+        </ul>
+    </div>
+    </body>
+</html>

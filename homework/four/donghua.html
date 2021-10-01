@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flower{
+            width: 73px;
+            height: 119px;
+            background:url(./逐帧动画素材图/hua.jpg);
+            animation:  grow 3s steps(6) infinite;
+        }
+       
+        .jingdong{
+            width: 662px;
+            height: 681px;
+            background: url(./逐帧动画素材图/jd.png);
+            animation: jd 2s steps(3) infinite;
+        }
+        .laoding{
+            width: 100px;
+            height: 100px;
+            background: url(./逐帧动画素材图/loading.png);
+            animation: laoding 3s steps(8) infinite; 
+        }
+        .run{
+            width: 140px;
+            height: 140px;
+            background: url(./逐帧动画素材图/run.png);
+            animation: run 1s steps(12) infinite;
+        }
+        .run2{
+            width: 137px;
+            height: 156px;
+            background: url(./逐帧动画素材图/run2.png);
+            animation: run2 1s steps(10) infinite;
+        }
+        .walk{
+             width: 160px;
+             height: 290px;
+             background:url(./逐帧动画素材图/walk.jpg);
+             animation: walk 1s steps(6) infinite;
+        }
+        @keyframes grow{
+            0%{
+                background-position: 0 0; 
+            }
+            100%{
+                background-position: -438px 0;
+            }
+        }
+        @keyframes jd{
+            0%{
+                background-position: 0 0; 
+            }
+            100%{
+                background-position: 0 -2045px;
+            }
+        }
+
+        @keyframes laoding{
+            0%{
+                background-position: 0 0; 
+            }
+            100%{
+                background-position: -800px 0;
+            }
+        }
+        @keyframes run{
+            0%{
+                background-position: 0 0; 
+            }
+            100%{
+                background-position: -1680px 0;
+            }
+        }
+        @keyframes run2{
+            0%{
+                background-position: 0 0; 
+            }
+            100%{
+                background-position: -1372px 0;
+            }
+        }
+        @keyframes walk{
+            0%{
+                background-position: 0 0; 
+            }
+            100%{
+                background-position: -1080px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flower">
+    </div>
+    <div class="jingdong"></div>
+    <div class="laoding"></div>
+    <div class="run"></div>
+    <div class="run2"></div>
+    <div class="walk"></div>
+</body>
+</html>

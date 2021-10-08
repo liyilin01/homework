@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			/* 第一题 */
+			.Button {
+				width: 30px;
+				height: 30px;
+				
+			}
+			.content {
+				background-color: yellow;	
+				width: 300px;
+				height: 50px;
+				display: none;
+				border-radius: 15%;
+			}
+			/* 第二题 */
+			#s-b {
+			    text-align: center;
+			    line-height: 30px;
+			}
+			.adminBtn {
+			    font-size: 24px;
+				text-decoration: none;
+			    color: black;
+				}
+			.login {
+				width: 400px; 
+				height: 300px;
+				background-color: white;
+				border: 1px solid black;
+				display: block;
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				transform: translateY(75%);
+				display: none;
+			}
+			#s-b span {
+				position: absolute;
+				right: 10px;
+				top: 0;
+				cursor: pointer;
+				color: gray;
+			}
+			#s-b span:hover {
+				color: black;
+			}
+			body {
+				position: relative;
+			}
+			/* 第三题 */
+			#t-c {
+				width: 200px;
+				height: 150px;
+				border: 1px solid black;
+				margin-top: 600px;
+				position: absolute;
+			}
+			#t-c .a input {
+				width: 100px;
+				height: 20px;
+				margin: 0 auto;
+				position: relative;
+				left: 50px;
+				top: 50px;
+			}
+			/* 第四题 */
+			#sencend {
+				width: 451px;
+				height: 551px;
+				border: 1px solid;
+				margin-top: 780px;
+				position: absolute;
+				
+			}
+			#sencend li {
+				display: block;
+				float: left;
+				width: 100px;
+				list-style: none;
+			}
+			/* 第五题 */
+			#d-1 {
+				width: 250px;
+				height: 40px;
+				margin-top: 1500px;
+				position: relative;
+			}
+			.d-2 {
+				float: right;
+				position: absolute;
+				right: 0;
+				top: 8px;
+			}
+			.d-3 {
+				float: right;
+				position: absolute;
+				right: 0;
+				top: 8px;
+			}
+			#d-1 .input {
+				width: 250px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 第一题 -->
+		<button  class="Button"></button>
+		<div class="content">为了您的信息安全，请不要在网吧或公共电脑上使用此功能！</div>
+		<!-- 第二题 -->
+		<div id="s-b">
+		    <a class="adminBtn" href="#">登录</a>
+			<div class="login">
+				<span>X</span>
+			</div>
+		</div>
+		<!-- 第三题 -->
+		<div id="t-c">
+			<div class="a">
+				<input type="text" value="请输入" class="input"/>
+			</div>
+		</div>
+		<!-- 第四题 -->
+		<div id="sencend">
+				<img src="images/1.png" alt="" class="i-5" width="100%" height="80%"/>
+				<ul>
+					<li class="i-1"><img src="./images/1.1.png" width="70px"/></li>
+					<li class="i-2"><img src="./images/2.2.png" width="70px"/></li>
+					<li class="i-3"><img src="./images/3.3.png" width="70px"/></li>
+					<li class="i-4"><img src="./images/4.4.png" width="70px"/></li>
+				</ul>
+		</div>
+		<!-- 第五题 -->
+		<div id="d-1">
+			<img src="./images/eyenone.png" class="d-3"/>
+			<input type="password" value=""  class="input" />
+		</div>
+		<script>
+			// 第一题
+			const Button = document.querySelector('.Button');
+			const content = document.querySelector('.content');
+			function overShow() {
+				content.style.display='block';
+			}
+			function overHidden(){
+				content.style.display='none';
+			}
+			Button.addEventListener('mouseover',overShow);
+			Button.addEventListener('mouseout',overHidden);	
+			//第二题
+			document.querySelector('#s-b .adminBtn').onclick = function() {
+				document.querySelector('#s-b .login').style.display = 'block';
+			}
+			document.querySelector('#s-b span').onclick = function() {
+				document.querySelector('#s-b .login').style.display = 'none';
+			}
+			//第三题
+			document.querySelector('#t-c .input').onfocus = function() {
+				document.querySelector('#t-c .input').value = '';
+				}
+				document.querySelector('#t-c .input').onblur = function() {
+					if(document.querySelector('#t-c .input').value == ''){
+						document.querySelector('#t-c .input').value = '请输入';
+					}
+					}
+					//第四题
+			document.querySelector('#sencend .i-1').onmouseover = function(){
+				document.querySelector('#sencend .i-5').src = './images/1.1.png';
+			}
+			document.querySelector('#sencend .i-2').onmouseover = function(){
+				document.querySelector('#sencend .i-5').src = './images/2.2.png';
+			}
+			document.querySelector('#sencend .i-3').onmouseover = function(){
+				document.querySelector('#sencend .i-5').src = './images/3.3.png';
+
+
+
+				
+			}
+			document.querySelector('#sencend .i-4').onmouseover = function(){
+				document.querySelector('#sencend .i-5').src = './images/4.4.png';
+			}
+					//第五题
+			let da = 2;
+			document.querySelector('#d-1 .d-3').onclick = function() {
+				if (da % 2 == 0) {
+					document.querySelector('#d-1 .d-3').src = './images/eyesee.png';
+					document.querySelector('#d-1 input').type = 'text';
+				}else {
+					document.querySelector('#d-1 .d-3').src = './images/eyenone.png';
+					document.querySelector('#d-1 input').type = 'password';
+				}
+				da++;
+			}
+		</script>
+	</body>
+</html>

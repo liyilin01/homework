@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>111</title>
+  <style>
+    h1 {
+      color: wheat;
+    }
+  </style>
+</head>
+<h1>第一小题</h1>
+<input type="number" placeholder="请输入a的值" class="aVal"><br />
+<input type="number" placeholder="请输入b的值" class="bVal"><br />
+<h3>a: <span class="spanA"></span></h3>
+<h3>b: <span class="spanB"></span></h3>
+<h2 class="result"></h2>
+<button>点击比较</button>
+<h1>判断可不可以被5整除</h1>
+<input type="number" placeholder="请输入a的值" class="aTwo">
+<h2 class="aResult"></h2>
+<button class="btn1">点击计算</button>
+<h1>得到三个值中最大的值</h1>
+<input type="number" placeholder="请输入a的值" class="inp1"><br/>
+<input type="number" placeholder="请输入b的值" class="inp2"><br/>
+<input type="number" placeholder="请输入c的值" class="inp3"><br />
+<h2 class="three-result"></h2>
+<button class="btn2">点击比较</button>
+<script>
+  // js练习题2第一小题
+  const aVal = document.querySelector('.aVal');
+  const bVal = document.querySelector('.bVal');
+  const spanA = document.querySelector('.spanA');
+  const spanB = document.querySelector('.spanB');
+  const btn = document.querySelector('button');
+  const result = document.querySelector('.result');
+  btn.addEventListener('click',function () {
+    if(!aVal.value || !bVal.value) {
+      return window.alert('请输入值')
+    }
+    spanA.innerHTML = aVal.value;
+    spanB.innerHTML = bVal.value;
+    if(parseFloat(spanA.innerHTML) > parseFloat(spanB.innerHTML)) {
+      result.innerHTML = 'a的值大于b的值'
+    }else if(parseFloat(spanA.innerHTML) < parseFloat(spanB.innerHTML)) {
+      result.innerHTML = 'b的值大于a的值'
+    }else {
+      result.innerHTML = 'a和b的值相等'
+    }
+    aVal.value = bVal.value = '';
+  })
+//  第二小题
+  const aTwo = document.querySelector('.aTwo');
+  const btn1 = document.querySelector('.btn1');
+  const aResult = document.querySelector('.aResult');
+  btn1.addEventListener('click',function() {
+    if(aTwo.value % 5 === 0) {
+      aResult.innerHTML = `这个数可以被5整除,结果为${aTwo.value / 5}`;
+    }else {
+      aResult.innerHTML = '不可以被5整除'
+    }
+  })
+//  第三小题
+  document.write('<h1>100以内的偶数</h1>')
+  for(let i = 1; i < 100; i++) {
+    if(i % 2 === 0) {
+      document.write(i + ' ');
+    }
+  }
+//  第四题
+  document.write('<h1>100以内7的倍数</h1>');
+  let num = 7;
+  while (num < 100) {
+    if(num % 7 === 0) {
+      document.write(num + ' ');
+    }
+    num++;
+  }
+//  第五小题
+  const inp1 = document.querySelector('.inp1');
+  const inp2 = document.querySelector('.inp2');
+  const inp3 = document.querySelector('.inp3');
+  const btn2 = document.querySelector('.btn2');
+  const result3 = document.querySelector('.three-result');
+  btn2.addEventListener('click',function() {
+    if(parseFloat(inp1.value) > parseFloat(inp2.value) && parseFloat(inp1.value) > parseFloat(inp3.value)) {
+      result3.innerHTML = `a的值最大,为${inp1.value}`;
+    }else if(parseFloat(inp2.value) > parseFloat(inp1.value) && parseFloat(inp2.value) > parseFloat(inp3.value)) {
+      result3.innerHTML = `b的值最大,为${inp2.value}`;
+    }else if(parseFloat(inp3.value) > parseFloat(inp2.value) && parseFloat(inp3.value) > parseFloat(inp1.value)) {
+      result3.innerHTML = `c的值最大,为${inp3.value}`;
+    }
+  })
+//  js练习题3-1
+  document.write('<h1>输出一百以内的偶数和奇数</h1>');
+  const p1 = document.createElement('p');
+  const p2 = document.createElement('p');
+  for(let i = 1; i < 100; i++) {
+    if(i % 2 === 0) {
+      p1.innerHTML += `${i} `
+    }else {
+      p2.innerHTML += `${i} `
+    }
+  }
+  document.body.appendChild(p1);
+  document.body.appendChild(p2);
+//  第二小题
+  document.write('<h1>编写函数实现累加</h1>')
+  function test(...args) {
+    let sum = 0;
+    let str = '';
+    for(let i = 0; i < args.length; i++) {
+      sum += args[i];
+      if(i === args.length - 1) {
+        str +=`${args[i]} = ${sum}`
+      }else {
+        str += `${args[i]} + `
+      }
+    }
+    return str
+  }
+  document.write(test(1,2,3,4,5,6,7,8,9) + '<br>')
+  document.write(test(3,6,9,1,4,7) + '<br>')
+  document.write(test(1) + '<br>')
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    h1 {
+      color: rgb(92, 11, 241);
+      cursor: pointer;
+      font-size: 26px;
+    }
+    h1:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<h1>第一题,反转</h1>
+<input type="text" class="inp" placeholder="请输入要反转的值"><br />
+<h3 class="repVal"></h3>
+<button class="btn">点击反转</button><br />
+<h1>第二题,改变Ip地址</h1>
+<input type="text" placeholder="请输入IP地址" class="inpIp">
+<h3 class="ipVal"></h3>
+<button class="btnIp">IP转换</button><br/>
+<h1>第三题，输出时间</h1>
+<h3 class="time">时间加载中</h3>
+<h1>第四题,验证字符串长度</h1>
+<input type="text" placeholder="请输入一个字符串" class="strInp"><br />
+<h3 class="respVal"></h3>
+<button class="strBtn">验证字符串</button>
+<h1>四则运算</h1>
+<input type="number" class="num1">
+<select>
+  <option>+</option>
+  <option>-</option>
+  <option>*</option>
+  <option>/</option>
+</select>
+<input type="number" class="num2">
+<button class="resultBtn">=</button>
+<input type="number" class="result">
+<button class="clearBtn">清空</button>
+<h1>获取随机数字</h1>
+<p class="ranVal"></p>
+<button class="ranNum">获取随机数字</button>
+<script>
+  // 字符串反转
+  const inp = document.querySelector('.inp');
+  const btn = document.querySelector('.btn');
+  const repVal = document.querySelector('.repVal');
+  //反转值的函数
+  function reverseStr(str) {
+    if(!str.trim()) {
+      return window.alert('请输入内容')
+    }else {
+      return str.split('.').reverse().join('.');
+    }
+  }
+//  表单事件
+  inp.addEventListener('focus',function() {
+    this.value = '';
+    repVal.innerHTML = '';
+  })
+//  按钮点击事件
+btn.onclick = function() {
+  repVal.innerHTML = reverseStr(inp.value);
+}
+//转换Ip地址
+  const inpIp = document.getElementsByClassName('inpIp')[0];
+  const btnIp = document.querySelector('.btnIp');
+  const ipVal = document.querySelector('.ipVal');
+//  封装的函数
+function repIp(ip) {
+  if(!ip) {
+    return window.alert('请输入正确的IP地址')
+  }
+  let index = ip.lastIndexOf('.')
+  return ip.split('').splice(0,index + 1).join('') + '*';
+
+}
+inpIp.addEventListener('focus',function() {
+  this.value = ipVal.innerHTML ='';
+})
+//按钮点击事件
+btnIp.addEventListener('click',function() {
+  ipVal.innerHTML = repIp(inpIp.value);
+})
+//  获取年月日
+  const time = document.querySelector('.time');
+  let timer = null;
+  function addZero(num) {
+    if(num < 10) {
+      let newNum = '0' + num;
+      return newNum
+    }else {
+      return num
+    }
+  }
+  function getDate() {
+  time.innerHTML = '';
+  const weekArr = ['日','一','二','三','四','五','六']
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let week = date.getDay();
+    let h = date.getHours();
+    let m = date.getMinutes();
+    let s = date.getSeconds();
+
+   time.innerHTML = (`${year}年${addZero(month)}月${addZero(day)}日${addZero(h)}时:${addZero(m)}分:${addZero(s)}秒 星期${weekArr[week]}`)
+
+  }
+  timer = setInterval(function() {
+    getDate()
+  },1000)
+//第四题
+  const strInp = document.querySelector('.strInp');
+  const strBtn = document.querySelector('.strBtn');
+  const respVal = document.querySelector('.respVal');
+  function verStr(str) {
+    let total = str.length;
+    if(total >= 2 && total <= 10) {
+      return `字符串的长度为${total},字符串的长度符合要求`
+    }else {
+      return `字符串的长度为${total},字符串的长度不符合要求`
+    }
+  // let rep = /[\u4e00-\u9fa5]/;
+  // let total = 0;
+  //   for(let i = 0; i < str.length; i++) {
+  //   total +=  rep.test(str[i])? 2 : 1
+  //   }
+  //   if(total >= 2 && total <= 10) {
+  //     return `字符串的长度为${total},字符串长度符合要求`
+  //   }else {
+  //     return `字符串的长度为${total},字符串长度不符合要求`
+  //   }
+  }
+  strInp.addEventListener('click',function() {
+    this.value = respVal.innerHTML = '';
+  })
+  strBtn.onclick = function() {
+    respVal.innerHTML = verStr(strInp.value);
+  }
+//  四则运算
+  const num1 = document.querySelector('.num1');
+  const num2 = document.querySelector('.num2');
+  const select = document.querySelector('select');
+  const resultBtn = document.querySelector('.resultBtn');
+  const result = document.querySelector('.result');
+  const clearBtn = document.querySelector('.clearBtn');
+  result.setAttribute('disabled',true);
+  resultBtn.onclick = function() {
+    let str = num1.value;
+    let len = str.length;
+    let str2 = num2.value;
+    let len2 = str2.length;
+    if(len === 0 || len2 === 0) {
+      return window.alert('请输入两个正确的数字')
+    }
+      let aVal = +num1.value;
+      let bVal = +num2.value;
+      switch (select.value) {
+      case '+':
+      result.value = aVal + bVal;
+        break;
+        case '-':
+          result.value = aVal - bVal;
+          break;
+        case '*':
+          result.value = aVal * bVal;
+          break;
+          default:
+            result.value = aVal / bVal;
+            break;
+      }
+  }
+  clearBtn.onclick = function() {
+    num1.value = num2.value = result.value = '';
+  }
+//  获取随机数字
+  const ranVal = document.querySelector('.ranVal');
+  const ranNum = document.querySelector('.ranNum');
+  function getRandom(min,max) {
+    return Math.floor(Math.random() * (max - min) + min)
+  }
+  ranNum.addEventListener('click',function() {
+    ranVal.innerHTML = `随机数${getRandom(0,10)}${getRandom(0,10)}${getRandom(0,10)}${getRandom(0,10)}`;
+  })
+</script>
+</body>
+</html>

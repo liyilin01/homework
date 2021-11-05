@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    textarea {
+      width: 200px;
+      height: 200px;
+    }
+    .box {
+      width: 250px;
+      border: 5px solid #333;
+    }
+    form {
+      margin-top: 10px;
+      width: 270px;
+      border: 5px solid #333;
+    }
+  </style>
+</head>
+<body>
+<!--全选反选-->
+<div class="box">
+  <p><input type="checkbox" class="allBtn">全选/全不选 <button class="btn">反选</button></p>
+  <p><input type="checkbox" class="option">选项一</p>
+  <p><input type="checkbox" class="option">选项二</p>
+  <p><input type="checkbox" class="option">选项三</p>
+  <p><input type="checkbox" class="option">选项四</p>
+  <p><input type="checkbox" class="option">选项五</p>
+</div>
+<!--表单验证-->
+<form action="https://www.baidu.com" method="get">
+  <div>
+    <label for="fullName">姓名:</label>
+    <input type="text" placeholder="请输入姓名" id="fullName">
+  </div>
+  <div>
+    <label for="pwd">密码:</label>
+    <input type="password" placeholder="请输入密码" id="pwd">
+  </div>
+
+  <div>
+    性别:<input type="radio" name="sex" id="boy"><label for="boy">男</label>
+    <input type="radio" name="sex" id="girl"><label for="girl">女</label>
+  </div>
+  <div>
+    <label for="age">请选择年龄:</label>
+    <select id="age">
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+    </select>
+  </div>
+  <div class="love">
+    请选择爱好:
+    <input type="checkbox" name="" id="book"><label for="book">读书</label>
+    <input type="checkbox" name="" id="music"><label for="music">音乐</label>
+    <input type="checkbox" name="" id="internet"><label for="internet">上网</label>
+  </div>
+  <div>
+    <textarea placeholder="请输入个人简介,不能少于10个字"></textarea>
+  </div>
+  <input type="submit" value="提交" id="sub">
+  <input type="button" value="重置" id="reset">
+</form>
+<script>
+const allBtn = document.querySelector('.allBtn');
+const btn = document.querySelector('.btn');
+const options = document.querySelectorAll('.option');
+//全选按钮点击
+allBtn.onclick = function() {
+  options.forEach((ele => ele.checked = this.checked))
+}
+//反选按钮点击事件
+btn.onclick = function() {
+  options.forEach(ele => ele.checked = !ele.checked);
+  allBtn.checked = true;
+  options.forEach(ele => {
+    if(!ele.checked) {
+      allBtn.checked = false;
+    }
+  })
+}
+//每个选项的点击事件
+  options.forEach(ele => {
+    ele.onclick = function() {
+      allBtn.checked = true;
+      options.forEach(ele => {
+        if(!ele.checked) {
+          allBtn.checked = false;
+        }
+      })
+    }
+  })
+//  表单验证
+  const fullName = document.querySelector('#fullName');
+  const pwd = document.querySelector('#pwd');
+  const boy = document.querySelector('#boy');
+  const girl = document.querySelector('#girl');
+  const likes = document.querySelectorAll('.love input');
+  const textArea = document.querySelector('textarea');
+  const sub = document.querySelector('#sub');
+  const resetBtn = document.querySelector('#reset');
+  //提交按钮点击事件
+  sub.onclick = function(e) {
+    let num = 0;// 用来选择爱好
+    // 阻止默认行为
+    e.preventDefault();
+    //姓名验证
+    if(!fullName.value.replaceAll(' ','')) {
+      alert('姓名不能为空');
+      return
+    }
+    //密码验证
+    if(pwd.value.length < 2 || pwd.value.length > 10) {
+      alert('密码的长度为2-10位')
+      return
+    }
+    //性别验证
+    if(!boy.checked && !girl.checked) {
+      alert('请选择性别')
+      return
+    }
+    //爱好验证
+    let result = Array.from(likes).filter(ele => ele.checked);
+    if(result.length === 0) {
+      alert('请选择爱好');
+      return
+    }
+      //个人简介验证
+      if(textArea.value.length < 10) {
+        alert('个人简介必须大于十个字符');
+        return
+      }
+    window.location.href = './ok.html';
+  }
+//重置按钮点击
+resetBtn.onclick = function() {
+    fullName.value = pwd.value = textArea.value = '';
+    boy.checked = girl.checked = false;
+    for(let i = 0; i < likes.length; i++) {
+      likes[i].checked = false;
+    }
+}
+
+</script>
+</body>
+</html>

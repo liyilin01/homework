@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div>倒计时 <span>10</span> 秒后返回页面</div>
+<button>点我立即返回</button>
+<script>
+  let time = 10;
+  const span = document.querySelector('span');
+  const btn = document.querySelector('button');
+  span.innerHTML = time;
+  setInterval(function() {
+    time--;
+    span.innerHTML = time;
+    if(time === 0) {
+      window.location.href = './jswork5.html'
+    }
+  },1000)
+  btn.onclick = function() {
+    window.location.href = './jswork5.html'
+  }
+</script>
+</body>
+</html>

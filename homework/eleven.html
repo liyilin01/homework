@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业</title>
+    <style>
+        div {
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>第一题</h2>
+    <div><input type="text"> <button class="add">添加</button></div>
+    <div>
+        <button class="clear">清空列表</button>
+    </div>
+    <hr>
+    <h2>第二题</h2>
+    <div>
+        1.C 2 .B 3.C 4.B 5.D 6.B 7.C 8.D 9.A 10.A 11.C 12.B 13.B 14.D 15.B 16.C 17.A 18.B 19.A 20.D
+    </div>
+    <hr>
+    <h2>第三题</h2>
+    <div>
+        <pre>
+            for($i =1; $i<=100;$i++){
+             echo $i.' ';
+            }
+        </pre>
+    </div>
+    <hr>
+    <h2>第四题</h2>
+    <div>
+        <pre>
+        for($i =1; $i<=100;$i++){
+            if($i%2===0){
+                echo$i.' ';
+            }
+        }
+    </pre>
+    </div>
+    <hr>
+    <h2>第五题</h2>
+    <div>
+        <pre>
+            for($i =1; $i<=100;$i++){
+                if($i%3==0 and $i%5==0){
+                    echo 'footbar'.' ';
+               }
+                elseif($i%3===0){
+                    echo 'foot'.'  ';
+                }
+                elseif($i%5===0){
+                    echo 'bar'.'  ';
+                }
+              
+            }}
+        }
+    </pre>
+    </div>
+    <hr>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        let n = 1
+        $('.add').click(function () {
+            if ($('input').val() === '') {
+                alert('还没填写内容')
+                $('input').val('')
+            }
+            else {
+                $('.clear').before(`<p>${n + '.' + '&nbsp;' + '<a href="javascript:;">&times;</a>' + '&nbsp;&nbsp;' + $('input').val()}</p>`)
+                n++;
+                $('input').val('')
+                $('a').click(function () {
+                    $(this).parent().remove();
+                })
+            }
+        })
+
+        $('.clear').click(function () {
+            $('p').remove();
+            $('input').val('')
+            n = 1;
+        })
+
+
+    </script>
+</body>
+
+</html>
